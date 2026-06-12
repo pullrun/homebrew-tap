@@ -3,12 +3,11 @@ class Pullrun < Formula
   homepage "https://github.com/pullrun/pullrun"
   license "Apache-2.0"
 
-  on_macos do
-    on_arm do
-      url "https://github.com/pullrun/pullrun/releases/download/v0.1.0/pullrun-0.1.0-darwin-arm64.tar.gz"
-      sha256 "1a9f6452f10585788eccdf43bb8b69ac1bd82ec57703ba0fea904af0ec631303"
-    end
-  end
+  url "https://github.com/pullrun/pullrun/releases/download/v0.1.0/pullrun-0.1.0-darwin-arm64.tar.gz"
+  sha256 "1a9f6452f10585788eccdf43bb8b69ac1bd82ec57703ba0fea904af0ec631303"
+  version "0.1.0"
+
+  bottle :unneeded
 
   def install
     bin.install "bin/pullrun"
