@@ -2,19 +2,22 @@ class Pullrun < Formula
   desc "Next-gen container runtime with zero-copy DAG storage and P2P image sync"
   homepage "https://github.com/pullrun/pullrun"
   license "Apache-2.0"
-
-  url "https://github.com/pullrun/pullrun/releases/download/v0.1.0/pullrun-0.1.0-darwin-arm64.tar.gz"
-  sha256 "1a9f6452f10585788eccdf43bb8b69ac1bd82ec57703ba0fea904af0ec631303"
   version "0.1.0"
 
+  root_url "https://github.com/pullrun/pullrun/releases/download/v0.1.0"
+  bottle do
+    rebuild 0
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1a9f6452f10585788eccdf43bb8b69ac1bd82ec57703ba0fea904af0ec631303"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1a9f6452f10585788eccdf43bb8b69ac1bd82ec57703ba0fea904af0ec631303"
+  end
+
   def install
-    bin.install "bin/pullrun"
-    bin.install "bin/pullrun-runtime"
-    bin.install "bin/apple-virt-exec"
+    bin.install Dir["bin/*"]
   end
 
   service do
     run [opt_bin/"pullrun-runtime"]
+    run_type :immediate
     keep_alive true
     process_type :background
   end
