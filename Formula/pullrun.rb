@@ -7,8 +7,6 @@ class Pullrun < Formula
   sha256 "1a9f6452f10585788eccdf43bb8b69ac1bd82ec57703ba0fea904af0ec631303"
   version "0.1.0"
 
-  bottle :unneeded
-
   def install
     bin.install "bin/pullrun"
     bin.install "bin/pullrun-runtime"
@@ -17,7 +15,6 @@ class Pullrun < Formula
 
   service do
     run [opt_bin/"pullrun-runtime"]
-    run_type :immediate
     keep_alive true
     process_type :background
   end
