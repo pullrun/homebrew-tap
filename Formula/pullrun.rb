@@ -1,21 +1,26 @@
 class Pullrun < Formula
   desc "Next-gen container runtime with zero-copy DAG storage and P2P image sync"
   homepage "https://github.com/pullrun/pullrun"
-  url "https://github.com/pullrun/pullrun/archive/refs/tags/v0.1.0.tar.gz"
   license "Apache-2.0"
 
-  depends_on "rust" => :build
-  depends_on "go" => :build
-  depends_on "protobuf" => :build
+  on_macos do
+    on_arm do
+      url "https://github.com/pullrun/pullrun/releases/download/v0.1.0/pullrun-0.1.0-darwin-arm64.tar.gz"
+      sha256 "1a9f6452f10585788eccdf43bb8b69ac1bd82ec57703ba0fea904af0ec631303"
+    end
+  end
 
   def install
-    # Build Rust runtime
-    system "cargo", "build", "--release", "--bin", "pullrun-runtime", "--manifest-path", "runtime/pullrun-runtime/Cargo.toml"
-    bin.install "runtime/pullrun-runtime/target/release/pullrun-runtime"
+    bin.install "bin/pullrun"
+    bin.install "bin/pullrun-runtime"
+    bin.install "bin/apple-virt-exec"
+  end
 
-    # Build Go CLI
-    system "go", "build", "-o", "pullrun", "./cli/pullrun/"
-    bin.install "pullrun"
+  service do
+    run [opt_bin/"pullrun-runtime"]
+    run_type :immediate
+    keep_alive true
+    process_type :background
   end
 
   test do
