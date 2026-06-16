@@ -3,9 +3,9 @@ class Pullrun < Formula
   homepage "https://github.com/pullrun/pullrun"
   license "Apache-2.0"
 
-  url "https://github.com/pullrun/pullrun/releases/download/v0.1.0/pullrun-0.1.0-darwin-arm64.tar.gz"
-  sha256 "1a9f6452f10585788eccdf43bb8b69ac1bd82ec57703ba0fea904af0ec631303"
-  version "0.1.0"
+  url "https://github.com/pullrun/pullrun/releases/download/v0.3.4/pullrun-0.3.4-darwin-arm64.tar.gz"
+  sha256 "1c4b0d417bb144c00abc5e2115141aafeacfc4b20d1d81cafa8cea6f4e55a8fd"
+  version "0.3.4"
 
   def install
     bin.install "bin/pullrun"
