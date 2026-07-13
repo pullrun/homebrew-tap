@@ -8,9 +8,9 @@ class Pullrun < Formula
   version "0.3.4"
 
   def install
-    bin.install "bin/pullrun"
-    bin.install "bin/pullrun-runtime"
-    bin.install "bin/apple-virt-exec"
+    bin.install "pullrun"
+    bin.install "pullrun-runtime"
+    bin.install "apple-virt-exec"
   end
 
   service do
