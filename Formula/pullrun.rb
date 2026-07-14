@@ -14,8 +14,13 @@ class Pullrun < Formula
   end
 
   def install
-    bin.install "pullrun"
-    bin.install "pullrun-runtime"
+    if Hardware::CPU.arm?
+      bin.install "pullrun-darwin-arm64" => "pullrun"
+      bin.install "pullrun-runtime-darwin-arm64" => "pullrun-runtime"
+    else
+      bin.install "pullrun-darwin-amd64" => "pullrun"
+      bin.install "pullrun-runtime-darwin-amd64" => "pullrun-runtime"
+    end
   end
 
   service do
