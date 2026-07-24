@@ -6,20 +6,22 @@ class Pullrun < Formula
 
   on_arm do
     url "https://github.com/pullrun/pullrun/releases/download/v0.6.7/pullrun-0.6.7-darwin-arm64.tar.gz"
-    sha256 "b63d4ad15288d949d6513f25a938970bd303e2a33c478898cbf0283412d3afff"
+    sha256 "92c4af4a07a0686ca3b8d9a9cc3d1fcc18ae0b87f924ffe69b2b27daa86bcea8"
   end
   on_intel do
     url "https://github.com/pullrun/pullrun/releases/download/v0.6.7/pullrun-0.6.7-darwin-amd64.tar.gz"
-    sha256 "7fdc5025c1f90a97306c748e660ecaedf59d4638a9524898302cb06c6434db97"
+    sha256 "4a130022894384399f37f1472375d2311ef60d3eff7bfc30039629f0fc314e38"
   end
 
   def install
     if Hardware::CPU.arm?
       bin.install "pullrun-darwin-arm64" => "pullrun"
       bin.install "pullrun-runtime-darwin-arm64" => "pullrun-runtime"
+      bin.install "pullrun-compose-darwin-arm64" => "pullrun-compose"
     else
       bin.install "pullrun-darwin-amd64" => "pullrun"
       bin.install "pullrun-runtime-darwin-amd64" => "pullrun-runtime"
+      bin.install "pullrun-compose-darwin-amd64" => "pullrun-compose"
     end
   end
 
