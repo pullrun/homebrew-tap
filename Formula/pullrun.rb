@@ -2,15 +2,15 @@ class Pullrun < Formula
   desc "Next-gen container runtime with zero-copy DAG storage and P2P image sync"
   homepage "https://github.com/pullrun/pullrun"
   license "Apache-2.0"
-  version "0.7.1"
+  version "0.7.2"
 
   on_arm do
-    url "https://github.com/pullrun/pullrun/releases/download/v0.7.1/pullrun-0.7.1-darwin-arm64.tar.gz"
-    sha256 "34900420526d1a9a13854f4972ce4e566f95c8808baa8df940f65521e377e9ae"
+    url "https://github.com/pullrun/pullrun/releases/download/v0.7.2/pullrun-0.7.2-darwin-arm64.tar.gz"
+    sha256 "febef9113084d921a986545bc470341dfd4e4c5a8fb867660457367dffd13259"
   end
   on_intel do
-    url "https://github.com/pullrun/pullrun/releases/download/v0.7.1/pullrun-0.7.1-darwin-amd64.tar.gz"
-    sha256 "f50356ceb4e64e0709fa1d215366360a5013ecbc0580678d5d27043d5850fcf1"
+    url "https://github.com/pullrun/pullrun/releases/download/v0.7.2/pullrun-0.7.2-darwin-amd64.tar.gz"
+    sha256 "52a5c53bee436742a8576edb9c6ee771a0e8ddc06243938a1226e86ba9f8a698"
   end
 
   def install
