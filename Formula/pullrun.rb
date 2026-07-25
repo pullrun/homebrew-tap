@@ -25,6 +25,23 @@ class Pullrun < Formula
     end
   end
 
+  def postinstall
+    rt = "#{prefix}/bin/pullrun-runtime"
+    plist = "#{prefix}/.entitlements.plist"
+    File.write(plist, <<~XML)
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+      <dict>
+        <key>com.apple.security.virtualization</key>
+        <true/>
+      </dict>
+      </plist>
+    XML
+    system "codesign", "--force", "--sign", "-",
+           "--entitlements", plist, "--options", "runtime", rt
+  end
+
   service do
     run [opt_bin/"pullrun-runtime"]
     run_type :immediate
