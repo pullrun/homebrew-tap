@@ -6,11 +6,11 @@ class Pullrun < Formula
 
   on_arm do
     url "https://github.com/pullrun/pullrun/releases/download/v0.7.3/pullrun-0.7.3-darwin-arm64.tar.gz"
-    sha256 "7ff59cdb51a8ceb4bbd6176e83bbbcd6a84bfd98f706f7d389c91e64218279a7"
+    sha256 "945cf2e2cb7a246d6bc66aacc5369074724649d96b11112a58a58a076d9a42c0"
   end
   on_intel do
     url "https://github.com/pullrun/pullrun/releases/download/v0.7.3/pullrun-0.7.3-darwin-amd64.tar.gz"
-    sha256 "cfd1a19037f9a00eb03dbf539ce98be499bf7a01f5b2448d1e1fe9fb7923db78"
+    sha256 "e9f78d13b0ab146adbc9e7a7eb4d91e35625a7ed87d3b934891aae68d62e5ad3"
   end
 
   def install
