@@ -42,9 +42,16 @@ class Pullrun < Formula
     system "codesign", "--force", "--sign", "-",
            "--entitlements", plist, "--options", "runtime", rt
 
-    initramfs_dir = Pathname.new(Dir.home) + ".pullrun/initramfs"
-    initramfs_dir.mkpath
-    system "cp", "-v", "#{share}/pullrun/pullrun-initramfs.cpio.gz", initramfs_dir.to_s
+    home = ENV["HOME"] || Dir.home
+    src = "#{share}/pullrun/pullrun-initramfs.cpio.gz"
+    dst_dir = "#{home}/.pullrun/initramfs"
+    ohai "post_install: home=#{home} src=#{src} dst=#{dst_dir}"
+    if File.exist?(src)
+      system "mkdir", "-p", dst_dir
+      system "cp", src, dst_dir
+    else
+      opoo "pullrun-initramfs.cpio.gz not found at #{src}"
+    end
   end
 
   service do
