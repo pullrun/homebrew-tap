@@ -23,7 +23,7 @@ class Pullrun < Formula
       bin.install "pullrun-runtime-darwin-amd64" => "pullrun-runtime"
       bin.install "pullrun-compose-darwin-amd64" => "pullrun-compose"
     end
-    share.install "pullrun-initramfs.cpio.gz"
+    (share/"pullrun").install "pullrun-initramfs.cpio.gz"
   end
 
   def postinstall
