@@ -44,7 +44,7 @@ class Pullrun < Formula
 
     initramfs_dir = Pathname.new(Dir.home) + ".pullrun/initramfs"
     initramfs_dir.mkpath
-    cp "#{share}/pullrun/pullrun-initramfs.cpio.gz", initramfs_dir
+    system "cp", "-v", "#{share}/pullrun/pullrun-initramfs.cpio.gz", initramfs_dir.to_s
   end
 
   service do
