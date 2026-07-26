@@ -42,16 +42,12 @@ class Pullrun < Formula
     system "codesign", "--force", "--sign", "-",
            "--entitlements", plist, "--options", "runtime", rt
 
-    home = ENV["HOME"] || Dir.home
+    require "etc"
+    real_home = Etc.getpwuid(Process.euid).dir
     src = "#{share}/pullrun/pullrun-initramfs.cpio.gz"
-    dst_dir = "#{home}/.pullrun/initramfs"
-    ohai "post_install: home=#{home} src=#{src} dst=#{dst_dir}"
-    if File.exist?(src)
-      system "mkdir", "-p", dst_dir
-      system "cp", src, dst_dir
-    else
-      opoo "pullrun-initramfs.cpio.gz not found at #{src}"
-    end
+    dst_dir = "#{real_home}/.pullrun/initramfs"
+    system "mkdir", "-p", dst_dir
+    system "cp", src, dst_dir
   end
 
   service do
