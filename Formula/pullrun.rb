@@ -6,11 +6,11 @@ class Pullrun < Formula
 
   on_arm do
     url "https://github.com/pullrun/pullrun/releases/download/v0.7.5/pullrun-0.7.5-darwin-arm64.tar.gz"
-    sha256 "729241cf5a2e733f6a5575878fa5af146f2a1ab26822306fbb96257c776d04dd"
+    sha256 "efd1ccd319f0c14ac6df540f99d437fc6ac70ab5106c62304c7b4e4498061105"
   end
   on_intel do
     url "https://github.com/pullrun/pullrun/releases/download/v0.7.5/pullrun-0.7.5-darwin-amd64.tar.gz"
-    sha256 "8b11301b2e4c5d97e24c1adae0bc818bbf145692761d7e9fb1118570da0eda79"
+    sha256 "ca04ea51c26714e201ffd43f4a3f375b1880347d2127e644fb6314103e279a1d"
   end
 
   def install
@@ -42,17 +42,6 @@ class Pullrun < Formula
     system "codesign", "--force", "--sign", "-",
            "--entitlements", plist, "--options", "runtime", rt
 
-  end
-
-  def caveats
-    <<~EOS
-      Initramfs (VM boot image) is installed at:
-        #{opt_share}/pullrun/pullrun-initramfs.cpio.gz
-
-      To activate it for VM boot, run:
-        mkdir -p ~/.pullrun/initramfs
-        cp #{opt_share}/pullrun/pullrun-initramfs.cpio.gz ~/.pullrun/initramfs/
-    EOS
   end
 
   service do
