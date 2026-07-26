@@ -26,7 +26,7 @@ class Pullrun < Formula
     (share/"pullrun").install "pullrun-initramfs.cpio.gz"
   end
 
-  def postinstall
+  def post_install
     rt = "#{prefix}/bin/pullrun-runtime"
     plist = "#{prefix}/.entitlements.plist"
     File.write(plist, <<~XML)
