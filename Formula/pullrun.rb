@@ -6,11 +6,11 @@ class Pullrun < Formula
 
   on_arm do
     url "https://github.com/pullrun/pullrun/releases/download/v0.7.5/pullrun-0.7.5-darwin-arm64.tar.gz"
-    sha256 "efeba9be4cf56aba5ac57d8d2edb1867f1d8dc195653c1e4da285b8fa7e78875"
+    sha256 "729241cf5a2e733f6a5575878fa5af146f2a1ab26822306fbb96257c776d04dd"
   end
   on_intel do
     url "https://github.com/pullrun/pullrun/releases/download/v0.7.5/pullrun-0.7.5-darwin-amd64.tar.gz"
-    sha256 "9689833677dc3bb3d892f8b899c12850c534846d6f7705b23518fd214414aaa9"
+    sha256 "8b11301b2e4c5d97e24c1adae0bc818bbf145692761d7e9fb1118570da0eda79"
   end
 
   def install
@@ -23,6 +23,7 @@ class Pullrun < Formula
       bin.install "pullrun-runtime-darwin-amd64" => "pullrun-runtime"
       bin.install "pullrun-compose-darwin-amd64" => "pullrun-compose"
     end
+    share.install "pullrun-initramfs.cpio.gz"
   end
 
   def postinstall
@@ -40,6 +41,10 @@ class Pullrun < Formula
     XML
     system "codesign", "--force", "--sign", "-",
            "--entitlements", plist, "--options", "runtime", rt
+
+    initramfs_dir = Pathname.new(Dir.home) + ".pullrun/initramfs"
+    initramfs_dir.mkpath
+    cp "#{share}/pullrun/pullrun-initramfs.cpio.gz", initramfs_dir
   end
 
   service do
