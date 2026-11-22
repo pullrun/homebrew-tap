@@ -2,15 +2,15 @@ class Pullrun < Formula
   desc "Agent sandbox runtime: OCI images as microVMs, containers, or sandbox groups"
   homepage "https://github.com/pullrun/pullrun"
   license "Apache-2.0"
-  version "0.8.0"
+  version "0.8.2"
 
   on_arm do
-    url "https://github.com/pullrun/pullrun/releases/download/v0.8.0/pullrun-0.8.0-darwin-arm64.tar.gz"
-    sha256 "8ee91cad96e4f460de004b51562e38f1abb26179c9fb38db8e64748a1fd24e02"
+    url "https://github.com/pullrun/pullrun/releases/download/v0.8.2/pullrun-0.8.2-darwin-arm64.tar.gz"
+    sha256 "a26dcb52ca890df66362ee3587fd2a6017c909ac0bd9fa9796490c584d9726a5"
   end
   on_intel do
-    url "https://github.com/pullrun/pullrun/releases/download/v0.8.0/pullrun-0.8.0-darwin-amd64.tar.gz"
-    sha256 "4aab121499b4a585765cd4fd1d52c2c1b2a53d3dd83436bdba4457cab7b35bc7"
+    url "https://github.com/pullrun/pullrun/releases/download/v0.8.2/pullrun-0.8.2-darwin-amd64.tar.gz"
+    sha256 "078bd6d92cf32ec9b82c2735de13ec5fdd9288b7152886e588f18f1cfccba53d"
   end
 
   def install
